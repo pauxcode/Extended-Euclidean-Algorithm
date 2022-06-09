@@ -47,21 +47,29 @@ int mcd(int a, int b, int c) {
     b = r;
   }
 
-  if (c != 0 && c % a == 0) {
-    printf("\nLa ecuacion tiene soluciones enteras");
-    x1 = (c / a) * x1;
-    y1 = (c / a) * y1;
+  if (c != 0) {
+    if (c % a != 0) {
+      printf("\nLa ecuacion no tiene soluciones enteras :(\n\n");
+    } else {
+      printf("\nLa ecuacion tiene soluciones enteras");
+      x1 = (c / a) * x1;
+      y1 = (c / a) * y1;
 
-    printf("\n\nSolucion particular para x: %d\n", x1);
-    printf("Solucion particular para y: %d\n\n", y1);
-   
-  } else {
+      printf("\n\nSolucion particular para x: %d\n", x1);
+      printf("Solucion particular para y: %d\n\n", y1);
+
+      printf("Soluciones para x: %d + %dn\n", x1, bInicial/a);
+      printf("Soluciones para y: %d - %dn\n\n", y1, aInicial/a);
+    }
+  } 
+
+  if (c == 0) {
     printf("\nSolucion particular para x: %d\n", x1);
     printf("Solucion particular para y: %d\n\n", y1);
+  
+    printf("Soluciones para x: %d + %dn\n", x1, bInicial/a);
+    printf("Soluciones para y: %d - %dn\n\n", y1, aInicial/a);
   }
- 
-  printf("Soluciones para x: %d + %dn\n", x1, bInicial/a);
-  printf("Soluciones para y: %d - %dn\n\n", y1, aInicial/a);
 
   return a;
 }
@@ -69,13 +77,13 @@ int mcd(int a, int b, int c) {
 
 void euclideanAlgorithmExtended(int *r, int *q, int *xn, int *x0, int *x1, int *yn, int *y0, int *y1) {
   if (*r != 0) {
-      *xn = *x0 - (*q * *x1);
-      *x0 = *x1;
-      *x1 = *xn;
+    *xn = *x0 - (*q * *x1);
+    *x0 = *x1;
+    *x1 = *xn;
 
-      *yn = *y0 - (*q * *y1);
-      *y0 = *y1;
-      *y1 = *yn;
-    }
+    *yn = *y0 - (*q * *y1);
+    *y0 = *y1;
+    *y1 = *yn;
+  }
 }
 
